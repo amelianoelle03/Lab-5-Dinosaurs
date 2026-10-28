@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#8ed8eb">
+	<title>Dino Meteor: A Machine Learning Experiment</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<!-- TensorFlow.js is loaded before Teachable Machine's image helper library. -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js" defer></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<main class="page-shell">
+		<header class="topbar">
+			<a class="brand" href="#top" aria-label="Dino Meteor home">
+				<span class="brand-mark" aria-hidden="true">☄</span>
+				<span>DINO <b>LAB</b></span>
+			</a>
+			<span class="edition">MACHINE LEARNING + BIOMIMICRY</span>
+		</header>
+
+		<section class="intro" id="top" aria-labelledby="page-title">
+			<div class="intro-copy">
+				<p class="eyebrow"><span></span> A hands-on experiment</p>
+				<h1 id="page-title">Dino Meteor<span class="title-dot">.</span></h1>
+				<p class="subtitle">A Machine Learning Experiment</p>
+				<p class="intro-description">Can your hand signal save the dinosaurs? Make a fist and watch your trained model call down a meteor.</p>
+			</div>
+			<div class="hero-doodle" aria-hidden="true">
+				<span class="doodle-star star-one">✦</span>
+				<span class="doodle-star star-two">✧</span>
+				<span class="doodle-meteor">☄</span>
+			</div>
+		</section>
+
+		<section class="experiment" aria-label="Interactive dinosaur experiment">
+			<div class="scene-wrap">
+				<div class="scene-heading">
+					<div>
+						<p class="section-kicker">FIELD STUDY 001</p>
+						<h2>The Cretaceous Valley</h2>
+					</div>
+					<div class="scene-state" id="scene-state" aria-live="polite"><span class="state-dot"></span><span id="scene-state-text">Dinos are roaming</span></div>
+				</div>
+
+				<div class="scene" id="scene" aria-label="A blue-sky prehistoric landscape with three roaming dinosaurs">
+					<div class="sun"></div>
+					<div class="cloud cloud-one"><i></i><i></i><i></i></div>
+					<div class="cloud cloud-two"><i></i><i></i><i></i></div>
+					<div class="mountain mountain-back"></div>
+					<div class="mountain mountain-front"></div>
+					<div class="volcano"><span class="volcano-crater"></span></div>
+					<div class="plant plant-one"><i></i><i></i><i></i></div>
+					<div class="plant plant-two"><i></i><i></i><i></i></div>
+					<div class="plant plant-three"><i></i><i></i><i></i></div>
+
+					<div class="dinosaur dino-one" data-dino="one" aria-label="A small green dinosaur">
+						<svg viewBox="0 0 170 130" role="img" aria-hidden="true">
+							<path class="dino-tail" d="M43 76 Q18 64 6 80 Q23 86 43 88Z"/><ellipse class="dino-body" cx="73" cy="78" rx="43" ry="29"/>
+							<path class="dino-neck" d="M89 71 Q92 42 110 30 L133 36 Q119 50 121 76Z"/><circle class="dino-head" cx="128" cy="36" r="19"/>
+							<path class="dino-snout" d="M137 43 Q157 43 158 51 Q147 56 135 51Z"/><circle class="dino-eye" cx="134" cy="31" r="3"/>
+							<path class="dino-spike" d="M69 51l9-15 9 15 9-17 10 18 9-14 8 17Z"/>
+							<path class="dino-leg" d="M48 96l-2 23h17l5-21m28-1 1 22h17l2-24"/><path class="dino-toe" d="M45 119h20m29 0h20"/>
+							<path class="dino-smile" d="M143 47q7 3 11 0"/>
+						</svg>
+					</div>
+					<div class="dinosaur dino-two" data-dino="two" aria-label="A tall green dinosaur">
+						<svg viewBox="0 0 190 150" role="img" aria-hidden="true">
+							<path class="dino-tail" d="M51 94 Q21 77 5 88 Q24 104 54 105Z"/><ellipse class="dino-body" cx="83" cy="96" rx="46" ry="32"/>
+							<path class="dino-neck" d="M105 88 Q111 48 125 30 L148 34 Q137 57 143 96Z"/><circle class="dino-head" cx="148" cy="34" r="20"/>
+							<path class="dino-snout" d="M157 42 Q180 39 184 48 Q175 58 156 51Z"/><circle class="dino-eye" cx="153" cy="29" r="3"/>
+							<path class="dino-spike" d="M54 69l10-17 10 17 10-19 10 19 10-16 9 19Z"/>
+							<path class="dino-leg" d="M58 119l-3 23h19l5-22m31 0 2 22h18l2-25"/><path class="dino-toe" d="M54 142h22m32 0h22"/>
+							<path class="dino-smile" d="M165 47q7 3 12-1"/>
+						</svg>
+					</div>
+					<div class="dinosaur dino-three" data-dino="three" aria-label="A friendly green dinosaur">
+						<svg viewBox="0 0 170 130" role="img" aria-hidden="true">
+							<path class="dino-tail" d="M40 78 Q15 63 5 77 Q20 91 45 89Z"/><ellipse class="dino-body" cx="72" cy="79" rx="41" ry="28"/>
+							<path class="dino-neck" d="M91 72 Q93 44 108 31 L130 36 Q120 51 123 77Z"/><circle class="dino-head" cx="128" cy="37" r="18"/>
+							<path class="dino-snout" d="M137 44 Q156 42 161 51 Q151 57 135 51Z"/><circle class="dino-eye" cx="134" cy="32" r="3"/>
+							<path class="dino-spike" d="M59 55l9-15 9 15 9-18 9 18 9-14 8 17Z"/>
+							<path class="dino-leg" d="M48 97l-2 22h17l4-21m27 0 1 21h17l2-24"/><path class="dino-toe" d="M45 119h20m28 0h21"/>
+							<path class="dino-smile" d="M142 48q7 3 11 0"/>
+						</svg>
+					</div>
+
+					<div class="meteor" id="meteor" aria-hidden="true"><div class="meteor-core"></div><div class="meteor-tail"></div></div>
+					<div class="impact" id="impact" aria-hidden="true"><span></span><i></i><b></b><em></em><small></small></div>
+					<div class="ground"><div class="ground-ridge"></div><span class="rock rock-one"></span><span class="rock rock-two"></span><span class="rock rock-three"></span><span class="ground-grass grass-one"></span><span class="ground-grass grass-two"></span></div>
+					<div class="scene-caption"><span class="caption-icon">✦</span> A quiet day in the valley… until you make a fist!</div>
+				</div>
+				<div class="scene-legend"><span><i class="legend-dino"></i> Roaming dinosaurs</span><span><i class="legend-sun"></i> Cretaceous Valley, 66 million years ago</span></div>
+			</div>
+
+			<aside class="control-panel" aria-label="Experiment controls">
+				<div class="panel-topline"><span class="panel-icon">◎</span><span>YOUR CONTROL DECK</span><span class="live-badge"><i></i> LIVE</span></div>
+				<h2>Make a move</h2>
+				<p class="panel-help">Show your hand to the camera. Your model will decide what happens next.</p>
+
+				<div class="camera-frame" id="camera-frame">
+					<div class="camera-placeholder" id="camera-placeholder">
+						<span class="camera-illustration" aria-hidden="true"><svg viewBox="0 0 48 40"><rect x="3" y="8" width="42" height="29" rx="5"/><circle cx="24" cy="22" r="8"/><path d="M15 8l3-5h12l3 5"/></svg></span>
+						<span>Camera preview will appear here</span>
+					</div>
+					<div id="webcam-container" class="webcam-container" aria-label="Live webcam preview"></div>
+					<span class="camera-live-label" id="camera-live-label"><i></i> CAMERA OFF</span>
+				</div>
+
+				<div class="prediction-card" aria-live="polite">
+					<div class="prediction-heading"><span>MODEL PREDICTION</span><span class="model-chip">TM IMAGE MODEL</span></div>
+					<div class="prediction-result"><span class="prediction-icon" id="prediction-icon">?</span><div><strong id="prediction-label">Waiting to start</strong><small id="prediction-confidence">Confidence: —</small></div></div>
+					<p class="prediction-note" id="prediction-note">Start the camera to see what the model detects.</p>
+				</div>
+
+				<div class="control-actions">
+					<button class="button button-primary" id="start-camera" type="button"><span class="button-camera">◉</span> Start Camera</button>
+					<button class="button button-reset" id="reset-scene" type="button"><span aria-hidden="true">↻</span> Reset</button>
+				</div>
+				<p class="privacy-note"><span aria-hidden="true">▣</span> Camera stays on this device. No video is recorded or sent.</p>
+			</aside>
+		</section>
+
+		<section class="how-it-works" aria-labelledby="how-title">
+		</section>
+	</main>
+</body>
+</html>
